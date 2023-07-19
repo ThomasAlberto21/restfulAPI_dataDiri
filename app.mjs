@@ -9,6 +9,8 @@ const server = http.createServer((req, res) => {
     service.getData(req, res);
   } else if (req.method === 'POST') {
     service.createData(req, res);
+  } else if (req.method === 'PUT') {
+    service.updateData(req, res);
   }
 });
 

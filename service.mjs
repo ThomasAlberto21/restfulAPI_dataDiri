@@ -45,4 +45,16 @@ export class Service {
       res.end();
     });
   }
+
+  updateData(req, res) {
+    req.addListener('data', (data) => {
+      const body = JSON.parse(data.toString());
+      if (this.dataDiri[body.id]) {
+        this.dataDiri[body.id] = body;
+      }
+
+      res.write(this.getJsonData());
+      res.end();
+    });
+  }
 }
