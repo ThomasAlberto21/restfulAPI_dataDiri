@@ -1,7 +1,7 @@
 import Data from './data.mjs';
 
 export class Service {
-  constructor(){
+  constructor() {
     this.data = Data;
   }
 
@@ -17,11 +17,10 @@ export class Service {
           tgl_lahir: value?.tgl_lahir,
           jenis_kelamin: value?.jenis_kelamin,
           gol_darah: value?.gol_darah,
-
           alamat: {
-            jalan: value?.jalan,
-            kota: value?.kota,
-            negara: value?.negara,
+            jalan: value?.alamat?.jalan,
+            kota: value?.alamat?.kota,
+            negara: value?.alamat?.negara,
           },
           agama: value?.agama,
           status: value?.status,
