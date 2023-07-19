@@ -57,4 +57,16 @@ export class Service {
       res.end();
     });
   }
+
+  deleteData(req, res) {
+    req.addListener('data', (data) => {
+      const body = JSON.parse(data.toString());
+      if (this.dataDiri[body.id]) {
+        this.dataDiri.splice(body.id, 1);
+      }
+
+      res.write(this.getJsonData());
+      res.end();
+    });
+  }
 }
