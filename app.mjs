@@ -6,6 +6,7 @@ const server = http.createServer((req, res) => {
   res.setHeader('Content-Type', 'application/json');
 
   if (req.method === 'GET') {
+    service.getData(req, res);
   }
 });
 
