@@ -7,6 +7,8 @@ const server = http.createServer((req, res) => {
 
   if (req.method === 'GET') {
     service.getData(req, res);
+  } else if (req.method === 'POST') {
+    service.createData(req, res);
   }
 });
 

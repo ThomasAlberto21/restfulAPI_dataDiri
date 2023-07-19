@@ -2,14 +2,14 @@ import Data from './data.mjs';
 
 export class Service {
   constructor() {
-    this.data = Data;
+    this.dataDiri = Data;
   }
 
   getJsonData() {
     return JSON.stringify({
       code: 200,
       status: 'OK',
-      data: this.data.map((value, index) => {
+      data: this.dataDiri.map((value, index) => {
         return {
           id: index,
           nama: value?.nama,
@@ -34,5 +34,15 @@ export class Service {
   getData(req, res) {
     res.write(this.getJsonData());
     res.end();
+  }
+
+  createData(req, res) {
+    req.addListener('data', (data) => {
+      const body = JSON.parse(data.toString());
+      this.dataDiri.push(body);
+
+      res.write(this.getJsonData());
+      res.end();
+    });
   }
 }
